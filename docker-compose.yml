@@ -1,0 +1,8 @@
+version: "1"  
+services:
+    python:
+        image: python:3.9-bullseye
+        command: sh -c "apt-get update && apt-get install libleptonica-dev -y && apt-get install tesseract-ocr -y && apt-get install libtesseract-dev ffmpeg libsm6 libxext6 -y && pip install pytesseract && pip install numpy && pip install pillow && pip install opencv-python && cp -v por.traineddata /usr/share/tesseract-ocr/4.00/tessdata/ && python main.py"
+        working_dir: /app
+        volumes:
+            - "./:/app"
